@@ -1,12 +1,32 @@
-const ReadingDetails = ({ reading }) => {
+import Table from 'react-bootstrap/Table';
+
+const ReadingDetails = ({ readings }) => {
     return (
         <div className="reading-details">
-            <p><strong>Customer ID: </strong>{ reading.customer_id }</p>
-            <p><strong>Submission Date: </strong>{ reading.submission_date }</p>
-            <p><strong>Electricity Reading Day: </strong>{ reading.elec_readings_day }</p>
-            <p><strong>Electricity Reading Night: </strong>{ reading.elet_reading_night }</p>
-            <p><strong>Gas Reading: </strong>{ reading.gas_reading }</p>
-            <p><strong>Status: </strong>{ reading.status }</p>
+            <Table stripped bordered hover>
+                <thead>
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Submission Date</th>
+                        <th>Electricity Reading Day</th>
+                        <th>Electricity Reading Night</th>
+                        <th>Gas Reading</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {readings && readings.map((reading) => ( 
+                        <tr key={reading._id}>
+                            <td><p>{ reading.customer_id }</p></td>
+                            <td><p>{ reading.submission_date }</p></td>
+                            <td><p>{ reading.elec_readings_day }</p></td>
+                            <td><p>{ reading.elet_reading_night }</p></td>
+                            <td><p>{ reading.gas_reading }</p></td>
+                            <td><p>{ reading.status }</p></td>
+                        </tr>
+                    ))}
+                </tbody>
+            </Table>
         </div>
     );
 }

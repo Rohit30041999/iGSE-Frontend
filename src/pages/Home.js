@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import ReadingForm from "../components/ReadingForm";
 import { useAuthContext } from "../hooks/useAuthContext";
-import ReadingDetails from "../components/ReadingDetails";
 import TopUp from "../components/TopUp";
 import Bill from "../components/Bill";
 import Taiff from "../components/Taiff";
+import ReadingDetails from "../components/ReadingDetails";
+
 
 const Home = () => {
 
@@ -39,10 +40,8 @@ const Home = () => {
                 customer && customer.customer_type === "admin" &&
                 (
                     <div className="customer-loggedin">
-                        <div className="readings">
-                            {readings && readings.map((reading) => ( 
-                                <ReadingDetails key={reading._id} reading={reading} /> 
-                            ))}
+                        <div className="customers-data">
+                            <ReadingDetails readings={readings} />
                         </div>
                         <div className="taiffs">
                             <Taiff />
